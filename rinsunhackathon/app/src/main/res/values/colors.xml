@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#2673c6</color>
     <color name="colorAccent">#3da4f1</color>
     <color name="mcv_text_date_notselect">#000000</color>
+    <color name="progress_active">#00a6ff</color>
+    <color name="progress_disactive">#ffffff</color>
 </resources>
