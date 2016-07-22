@@ -39,6 +39,12 @@ public class MainPager extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedSet();
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), getPref());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -43,17 +43,9 @@ public class ListPager extends Fragment implements AdapterView.OnItemClickListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPackageManager = getActivity().getPackageManager();
-
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
         intentList = getActivity().getPackageManager().queryIntentActivities(intent, 0);
-
-        SharedSet();
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), getPref());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Nullable
@@ -73,21 +65,6 @@ public class ListPager extends Fragment implements AdapterView.OnItemClickListen
         return view;
     }
 
-    private void SharedSet() {
-        s = getActivity().getSharedPreferences("data", 0);
-        editor = s.edit();
-    }
-
-    protected void SavePref(String o){
-        editor.putString("image", o);
-        editor.commit();
-    }
-
-    protected Uri getPref(){
-        String v = s.getString("image", "");
-        Uri u = Uri.parse(v);
-        return u;
-    }
 
 
     @Override
@@ -120,17 +97,4 @@ public class ListPager extends Fragment implements AdapterView.OnItemClickListen
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQ_CODE_SELECT_IMAGE) {
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
-                SavePref(data.getData().toString());
-                mBackground.setImageBitmap(bitmap);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
