@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".SettingActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+
+        <activity android:name=".DateActivity"
+            android:theme="@style/AppTheme"></activity>
 
     </application>
 
